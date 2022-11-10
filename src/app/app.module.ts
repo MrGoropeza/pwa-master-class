@@ -12,6 +12,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { PrimeComponentsModule } from './prime-components.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PrimeComponentsModule } from './prime-components.module';
     BrowserModule,
     BrowserAnimationsModule,
     PrimeComponentsModule,
+    FormsModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
