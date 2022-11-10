@@ -6,6 +6,14 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: () => import("./homepage/homepage.module").then(m => m.HomepageModule)
+  },
+  {
+    path: "auth",
+    loadChildren: () => import("./modules/auth/auth.module").then(m => m.AuthModule)
+  },
+  {
+    path: "todos",
+    loadChildren: () => import("./modules/todo/todo.module").then(m => m.TodoModule)
   }
 ]
 
