@@ -100,8 +100,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "pwa-master-class:build:production",
+            "firebaseProject": "pwa-master-class",
+            "firebaseHostingSite": "pwa-master-class"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

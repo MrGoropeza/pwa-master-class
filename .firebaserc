@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pwa-master-class": {
+      "hosting": {
+        "pwa-master-class": [
+          "pwa-master-class"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pwa-master-class"
+  }
+}
