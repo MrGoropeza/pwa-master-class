@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
@@ -11,7 +12,6 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { PrimeComponentsModule } from './prime-components.module';
-import { HomepageModule } from './homepage/homepage.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,7 @@ import { HomepageModule } from './homepage/homepage.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     PrimeComponentsModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
