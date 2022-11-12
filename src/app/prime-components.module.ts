@@ -6,6 +6,7 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {ImageModule} from 'primeng/image';
 import {InputTextModule} from 'primeng/inputtext';
+import {RippleModule} from 'primeng/ripple';
 
 @NgModule({
   exports: [
@@ -13,7 +14,8 @@ import {InputTextModule} from 'primeng/inputtext';
     InputSwitchModule,
     ScrollPanelModule,
     ImageModule,
-    InputTextModule
+    InputTextModule,
+    RippleModule
   ]
 })
 export class PrimeComponentsModule { }
