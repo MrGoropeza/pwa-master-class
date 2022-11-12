@@ -23,11 +23,7 @@ export class AuthService {
 
     const res = await this.auth.getRedirectResult();
 
-    if(res.user){
-      return res.user;
-    }
-
-    return null;
+    return (await this.auth.getRedirectResult()).user;
   }
 
   async signOut(){
