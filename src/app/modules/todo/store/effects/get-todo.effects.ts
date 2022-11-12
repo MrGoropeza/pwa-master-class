@@ -23,13 +23,6 @@ export class GetTodoEffects {
         return this.todoService.getTodo().pipe(
           map(todos => GetTodosSuccess({todos})),
           catchError(e => {
-            console.log(e);
-            
-            this.messageService.add({
-              severity: "error",
-              summary: "Error",
-              detail: e
-            })
             return of(GetTodosFailure({error: `${e}`}));
           })
         )

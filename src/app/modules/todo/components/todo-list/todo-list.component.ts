@@ -15,6 +15,8 @@ export class TodoListComponent implements OnInit {
 
   todos!: Observable<TodoModel[]>
 
+  
+
   constructor(private todoStore: Store<TodoState>) { }
 
   ngOnInit(): void {
