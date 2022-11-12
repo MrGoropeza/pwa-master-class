@@ -7,6 +7,10 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 
 
 @NgModule({
-  exports: [ButtonModule, InputSwitchModule]
+  exports: [
+    ButtonModule, 
+    InputSwitchModule,
+    
+  ]
 })
 export class PrimeComponentsModule { }

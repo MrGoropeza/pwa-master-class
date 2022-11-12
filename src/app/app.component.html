@@ -1,5 +1,6 @@
-<div class="dark:bg-slate-800 dark:text-slate-50 min-w-screen min-h-screen">
-  <div class="flex items-center border border-black rounded-lg max-w-min p-1">
+<div class="bg-gradient-to-r dark:from-slate-900 dark:to-slate-700 dark:text-slate-50 from-slate-300 to-slate-50 min-w-screen min-h-screen overflow-hidden">
+  
+  <div class="flex items-center bg-gray-200 dark:bg-slate-500 rounded-lg max-w-min p-1 fixed top-0 right-0">
     <i class="pi pi-sun text-yellow-500" style="font-size: 2rem;" *ngIf="!isOnDarkTheme"></i>
     <i class="pi pi-moon text-gray-300" style="font-size: 2rem;" *ngIf="isOnDarkTheme"></i>
 
@@ -10,7 +11,6 @@
     ></p-inputSwitch>
 
   </div>
-
 
   <router-outlet></router-outlet>
 
