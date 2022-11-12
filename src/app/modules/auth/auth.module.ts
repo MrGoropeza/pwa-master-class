@@ -7,6 +7,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { CheckAuthEffects } from './store/effects/check-auth.effects';
 import { SignInWithGoogleEffects } from './store/effects/sign-in-with-google.effects';
 import { SignOutEffects } from './store/effects/sign-out.effects';
+import { StoreModule } from '@ngrx/store';
+import { authFeatureKey, reducer } from './store/reducer/auth.reducer';
+import { AuthService } from './services/auth.service';
+import { SignedInGuard } from './guards/signed-in.guard';
+import { SignedOutGuard } from './guards/signed-out.guard';
 
 const routes: Routes = [
   {
@@ -21,9 +26,13 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule, 
-    RouterModule.forChild(routes), 
     PrimeComponentsModule, 
+    RouterModule.forChild(routes), 
+    StoreModule.forFeature(authFeatureKey, reducer),
     EffectsModule.forFeature([CheckAuthEffects, SignInWithGoogleEffects, SignOutEffects])
+  ],
+  providers: [
+    AuthService, SignedInGuard, SignedOutGuard
   ]
 })
 export class AuthModule { }

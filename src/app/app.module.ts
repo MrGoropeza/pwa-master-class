@@ -13,6 +13,13 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { PrimeComponentsModule } from './prime-components.module';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from './modules/auth/services/auth.service';
+import { SignedInGuard } from './modules/auth/guards/signed-in.guard';
+import { SignedOutGuard } from './modules/auth/guards/signed-out.guard';
+import { authFeatureKey, reducer } from './modules/auth/store/reducer/auth.reducer';
+import { CheckAuthEffects } from './modules/auth/store/effects/check-auth.effects';
+import { SignOutEffects } from './modules/auth/store/effects/sign-out.effects';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -21,17 +28,20 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     PrimeComponentsModule,
     FormsModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    AppRoutingModule,
+    StoreModule.forFeature(authFeatureKey, reducer),
+    EffectsModule.forFeature([CheckAuthEffects, SignOutEffects])
   ],
-  providers: [],
+  providers: [AuthService, SignedInGuard, SignedOutGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

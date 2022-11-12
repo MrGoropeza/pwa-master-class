@@ -4,7 +4,9 @@
     <h2 class="text-lg font-bold text-center">AP Todo App</h2>
 
     <div class="my-5 p-2 mx-auto">
-      <p-button styleClass="p-2 text-xl font-bold" routerLink="/todos">Iniciar Sesión con Google</p-button>
+      <p-button styleClass="p-2 text-xl font-bold" (onClick)="signInWithGoogle()" [loading]="(authLoading | async)!">
+        {{ authLoading ? "Cargando..." : "Iniciar Sesión con Google" }}
+      </p-button>
     </div>
   </div>
 </div>
