@@ -2,17 +2,17 @@
     <div class="flex space-x-2 p-2 bg-slate-400 dark:bg-slate-700 rounded-xl drop-shadow-md justify-between">
     
 
-        <p-image src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" width="50"
+        <p-image [src]="(user | async)!.photoUrl" width="50"
             imageClass="flex-grow md:flex-none rounded-full"></p-image>
 
     
         <div class="md:flex-grow hidden md:block">
-            <p class="font-bold text-lg">Nombre Apellido</p>
-            <p>correo@gmail.com</p>
+            <p class="font-bold text-lg">{{ (user | async)?.name }}</p>
+            <p>{{ (user | async)?.email }}</p>
         </div>
     
         <div class="flex-none">
-            <button pButton label="Cerrar Sesión" class="p-button-danger h-full"></button>
+            <button pButton label="Cerrar Sesión" class="p-button-danger h-full" (click)="signout()"></button>
         </div>
     
         <div class="flex flex-none items-center bg-gray-200 dark:bg-slate-500 rounded-md max-w-min max-h-min px-2">
