@@ -51,7 +51,7 @@ export const reducer = createReducer <State, Action>(
   ),
   on(
     SignOutsSuccess,
-    (state) => ({...state, loading: false})
+    (state) => ({...state, loading: false, user: null})
   ),
   on(
     SignOutsFailure,
