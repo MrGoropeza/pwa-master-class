@@ -7,6 +7,8 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoListTileComponent } from './components/todo-list-tile/todo-list-tile.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { TodoFormComponent } from './components/todo-form/todo-form.component';
+import { PrimeComponentsModule } from 'src/app/prime-components.module';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -25,7 +27,7 @@ const routes: Routes = [
     TodoFormComponent
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes)
+    CommonModule, RouterModule.forChild(routes), PrimeComponentsModule, FormsModule
   ]
 })
 export class TodoModule { }
