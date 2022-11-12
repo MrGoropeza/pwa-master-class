@@ -7,12 +7,14 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { TodoFormComponent } from './components/todo-form/todo-form.component';
 import { PrimeComponentsModule } from 'src/app/prime-components.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { GetTodoEffects } from './store/effects/get-todo.effects';
 import { AddTodoEffects } from './store/effects/add-todo.effects';
 import { UpdateTodoEffects } from './store/effects/update-todo.effects';
 import { DeleteTodoEffects } from './store/effects/delete-todo.effects';
+import { StoreModule } from '@ngrx/store';
+import { reducer, todoFeatureKey } from './store/reducers/todo.reducer';
 
 const routes: Routes = [
   {
@@ -30,7 +32,13 @@ const routes: Routes = [
     TodoFormComponent
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes), PrimeComponentsModule, FormsModule, EffectsModule.forFeature([GetTodoEffects, AddTodoEffects, UpdateTodoEffects, DeleteTodoEffects])
+    CommonModule, 
+    PrimeComponentsModule, 
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule.forChild(routes), 
+    EffectsModule.forFeature([GetTodoEffects, AddTodoEffects, UpdateTodoEffects, DeleteTodoEffects]),
+    StoreModule.forFeature(todoFeatureKey, reducer)
   ]
 })
 export class TodoModule { }

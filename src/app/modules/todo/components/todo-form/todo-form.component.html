@@ -1,8 +1,11 @@
-<div class="p-inputgroup px-10 py-3 shadow-xl">
-    <span class="p-float-label">
-        <input id="float-input-invalid" type="text" pInputText class="dark:bg-slate-500 border-none">   
-        <label for="float-input-invalid" class="dark:text-white">Descripción de Tarea</label>
-    </span>
-    
-    <button type="button" pButton pRipple icon="pi pi-plus" class="p-button-success border-none"></button>      
-</div>
+<form [formGroup]="todoForm" (ngSubmit)="submit()">
+    <div class="p-inputgroup px-10 py-3 shadow-xl">
+        <span class="p-float-label">
+            <input id="float-input-invalid" formControlName="text" type="text" pInputText class="dark:bg-slate-500 border-none">   
+            <label for="float-input-invalid" class="dark:text-white">Descripción de Tarea</label>
+        </span>
+        
+        <button type="button" pButton pRipple icon="pi pi-plus" class="p-button-success border-none" (click)="submit()"></button>      
+
+    </div>
+</form> 
