@@ -24,6 +24,7 @@ import { MessageService } from 'primeng/api';
 import { todoFeatureKey, todoReducer } from './modules/todo/store/reducers/todo.reducer';
 import { GetTodoEffects } from './modules/todo/store/effects/get-todo.effects';
 import { TodoService } from './modules/todo/services/todo.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,13 @@ import { TodoService } from './modules/todo/services/todo.service';
     EffectsModule.forFeature([CheckAuthEffects, SignOutEffects]),
 
     StoreModule.forFeature(todoFeatureKey, todoReducer),
-    EffectsModule.forFeature([GetTodoEffects])
+    EffectsModule.forFeature([GetTodoEffects]),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [AuthService, TodoService, SignedInGuard, SignedOutGuard, MessageService],
   bootstrap: [AppComponent]

@@ -31,6 +31,7 @@ export class TodoFormComponent implements OnInit {
 
       if(text.length !== 0){
         this.todoStore.dispatch(AddTodos({todoText: text}));
+        this.todoForm.reset();
       }
     }
   }
