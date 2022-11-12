@@ -5,7 +5,7 @@
 
     <div class="my-5 p-2 mx-auto">
       <p-button styleClass="p-2 text-xl font-bold" (onClick)="signInWithGoogle()" [loading]="(authLoading | async)!">
-        {{ authLoading ? "Cargando..." : "Iniciar Sesión con Google" }}
+        {{ (authLoading | async) ? "Cargando..." : "Iniciar Sesión con Google" }}
       </p-button>
     </div>
   </div>
