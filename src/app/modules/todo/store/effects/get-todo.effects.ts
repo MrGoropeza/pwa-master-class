@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { MessageService } from 'primeng/api';
 import { catchError, map, mergeMap, of } from 'rxjs';
 import { TodoService } from '../../services/todo.service';
 import { GetTodos, GetTodosFailure, GetTodosSuccess } from '../actions/get-todo.actions';
@@ -11,7 +12,8 @@ export class GetTodoEffects {
 
   constructor(
     private actions$: Actions,
-    private todoService: TodoService
+    private todoService: TodoService,
+    private messageService: MessageService
   ) {}
 
   public getTodos$ = createEffect(() => {
@@ -20,7 +22,16 @@ export class GetTodoEffects {
       mergeMap(() => {
         return this.todoService.getTodo().pipe(
           map(todos => GetTodosSuccess({todos})),
-          catchError(e => of(GetTodosFailure({error: `${e}`})))
+          catchError(e => {
+            console.log(e);
+            
+            this.messageService.add({
+              severity: "error",
+              summary: "Error",
+              detail: e
+            })
+            return of(GetTodosFailure({error: `${e}`}));
+          })
         )
       })
     )

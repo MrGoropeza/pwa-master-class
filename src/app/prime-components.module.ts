@@ -7,6 +7,7 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {ImageModule} from 'primeng/image';
 import {InputTextModule} from 'primeng/inputtext';
 import {RippleModule} from 'primeng/ripple';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   exports: [
@@ -15,7 +16,8 @@ import {RippleModule} from 'primeng/ripple';
     ScrollPanelModule,
     ImageModule,
     InputTextModule,
-    RippleModule
+    RippleModule,
+    ToastModule
   ]
 })
 export class PrimeComponentsModule { }

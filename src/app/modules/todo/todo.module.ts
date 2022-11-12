@@ -14,12 +14,16 @@ import { AddTodoEffects } from './store/effects/add-todo.effects';
 import { UpdateTodoEffects } from './store/effects/update-todo.effects';
 import { DeleteTodoEffects } from './store/effects/delete-todo.effects';
 import { StoreModule } from '@ngrx/store';
-import { reducer, todoFeatureKey } from './store/reducers/todo.reducer';
+import { todoReducer, todoFeatureKey } from './store/reducers/todo.reducer';
+import { TodoService } from './services/todo.service';
+import { SignedInGuard } from '../auth/guards/signed-in.guard';
+import { SignedOutGuard } from '../auth/guards/signed-out.guard';
 
 const routes: Routes = [
   {
     path: "",
-    component: TodoMainComponent
+    component: TodoMainComponent,
+    canActivate: [SignedInGuard]
   }
 ]
 
@@ -38,7 +42,8 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes), 
     EffectsModule.forFeature([GetTodoEffects, AddTodoEffects, UpdateTodoEffects, DeleteTodoEffects]),
-    StoreModule.forFeature(todoFeatureKey, reducer)
-  ]
+    StoreModule.forFeature(todoFeatureKey, todoReducer)
+  ],
+  providers: [TodoService, SignedInGuard, SignedOutGuard]
 })
 export class TodoModule { }

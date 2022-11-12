@@ -16,7 +16,8 @@ import { SignedOutGuard } from './guards/signed-out.guard';
 const routes: Routes = [
   {
     path: "",
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [SignedOutGuard]
   }
 ];
 

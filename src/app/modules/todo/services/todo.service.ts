@@ -24,9 +24,7 @@ export class TodoService {
 
   public getTodo(): Observable<TodoModel[]> {
     return this.firestore
-      .collection<TodoModel>(`users/${this.user?.uid}/todos`, (ref) =>
-        ref.orderBy('createdAt', 'desc')
-      )
+      .collection<TodoModel>(`users/${this.user?.uid}/todos`, ref => ref.orderBy("createdAt", "desc"))
       .snapshotChanges()
       .pipe(
         map((querySnapshot) => {

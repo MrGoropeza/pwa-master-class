@@ -25,7 +25,7 @@ const defaultState: TodoState = {
 
 export const initialState: TodoState = todoAdapter.getInitialState(defaultState);
 
-export const reducer = createReducer(
+export const todoReducer = createReducer(
   initialState,
   on(GetTodos, (state) => ({...state, loading: true})),
   on(GetTodosSuccess, (state, action) => todoAdapter.setAll(action.todos, {...state, loading: false})),

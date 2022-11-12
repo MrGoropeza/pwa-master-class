@@ -20,6 +20,10 @@ import { authFeatureKey, reducer } from './modules/auth/store/reducer/auth.reduc
 import { CheckAuthEffects } from './modules/auth/store/effects/check-auth.effects';
 import { SignOutEffects } from './modules/auth/store/effects/sign-out.effects';
 import { AngularFireModule } from '@angular/fire/compat';
+import { MessageService } from 'primeng/api';
+import { todoFeatureKey, todoReducer } from './modules/todo/store/reducers/todo.reducer';
+import { GetTodoEffects } from './modules/todo/store/effects/get-todo.effects';
+import { TodoService } from './modules/todo/services/todo.service';
 
 @NgModule({
   declarations: [
@@ -39,9 +43,12 @@ import { AngularFireModule } from '@angular/fire/compat';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     StoreModule.forFeature(authFeatureKey, reducer),
-    EffectsModule.forFeature([CheckAuthEffects, SignOutEffects])
+    EffectsModule.forFeature([CheckAuthEffects, SignOutEffects]),
+
+    StoreModule.forFeature(todoFeatureKey, todoReducer),
+    EffectsModule.forFeature([GetTodoEffects])
   ],
-  providers: [AuthService, SignedInGuard, SignedOutGuard],
+  providers: [AuthService, TodoService, SignedInGuard, SignedOutGuard, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

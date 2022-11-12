@@ -1,12 +1,15 @@
 
 <div class="flex items-center shadow-lg rounded-lg bg-slate-400 dark:bg-gray-700 gap-3 p-1 m-2">
 
-    <div class="flex-none h-5 min-w-3 w-5 bg-green-500 dark:bg-green-700 rounded-full"></div>
+    <div (click)="updateTodo()">
+        <div class="flex-none h-5 min-w-3 w-5 bg-green-500 dark:bg-green-700 rounded-full"></div>
+    
+        <p class="flex-grow font-semibold">{{ todo.text }}</p>
 
-    <p class="flex-grow font-semibold">{{ todo.text }}</p>
+    </div>
 
     <div class="flex-none">
-        <button pButton icon="pi pi-trash" class="p-button-danger h-full"></button>
+        <button pButton icon="pi pi-trash" class="p-button-danger h-full" (click)="deleteTodo()"></button>
     </div>
 
 </div>
