@@ -47,14 +47,14 @@ export class TodoService {
       );
   }
 
-  public async addTodo(todoTile: string) {
+  public async addTodo(todoText: string) {
     await this.firestore
       .collection('users')
       .doc(this.user?.uid)
       .collection('todos')
       .doc(uuidV4())
       .set({
-        title: todoTile,
+        text: todoText,
         done: false,
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),

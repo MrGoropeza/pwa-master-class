@@ -3,7 +3,7 @@ import { TodoModel } from 'src/app/models/todo.model';
 
 export const AddTodos = createAction(
   '[AddTodo] AddTodos',
-  props<{newTodo: TodoModel}>()
+  props<{todoText: string}>()
 );
 
 export const AddTodosSuccess = createAction(
