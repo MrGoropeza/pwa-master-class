@@ -1,8 +1,10 @@
 
 <div class="flex items-center shadow-lg rounded-lg bg-slate-400 dark:bg-gray-700 gap-3 p-1 m-2">
 
-    <div (click)="updateTodo()">
-        <div class="flex-none h-5 min-w-3 w-5 bg-green-500 dark:bg-green-700 rounded-full"></div>
+    <div class="flex flex-grow gap-3" (click)="updateTodo()">
+        <div class="flex-none h-5 min-w-3 w-5   rounded-full"
+            [ngClass]="todo.done ? 'bg-green-500': 'bg-yellow-500'"
+            [ngClass]="todo.done ? 'dark:bg-green-700': 'dark:bg-yellow-700'"></div>
     
         <p class="flex-grow font-semibold">{{ todo.text }}</p>
 
